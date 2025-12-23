@@ -1,10 +1,10 @@
-# The Metric Mirage - Main Algorithm Implementation
+# The Erasure Illusion: Stress-Testing the Generalization of LLM Forgetting Evaluation
 
-This repository contains the implementation of our core algorithm **The Metric Mirage** for generating semantically similar but embedding-distant text through iterative embedding distance maximization and sampling-based rephrasing.
+This repository contains the implementation of our core algorithm **Proximal Surrogate Generation (PSG)** for generating semantically similar but embedding-distant text through iterative embedding distance maximization and sampling-based rephrasing.
 
-## Core Algorithm: The Metric Mirage
+## Core Algorithm: Proximal Surrogate Generation (PSG)
 
-Our method **The Metric Mirage** combines two key components:
+Our method **PSG** combines two key components:
 
 1. **GCG-like Embedding Distance Maximization** - Uses gradient-based controlled generation to maximize distance from original dataset embeddings while maintaining semantic relevance
 2. **Sampling-based Rephrasing** - Balances preference for finetuned model with likelihood preservation to ensure generated text remains contextually appropriate
@@ -19,7 +19,7 @@ The algorithm takes an original model θ, unlearning dataset D_u, and iterativel
 
 ### Key Innovation
 
-**The Metric Mirage** addresses the challenge of creating text that appears semantically similar but is maximally distant in embedding space, effectively creating a "mirage" where text maintains contextual relevance while being maximally separated from the original dataset in the embedding manifold.
+**PSG** addresses the challenge of creating text that appears semantically similar but is maximally distant in embedding space, effectively creating a "mirage" where text maintains contextual relevance while being maximally separated from the original dataset in the embedding manifold.
 
 ## Quick Start
 
@@ -31,7 +31,7 @@ huggingface-cli login
 
 ### Workflow
 
-**The Metric Mirage** requires a two-step process:
+**PSG** requires a two-step process:
 
 1. **Precompute Embeddings** - First, compute embeddings for the unlearning dataset
 2. **Run Main Algorithm** - Then execute the main algorithm using the precomputed embeddings
@@ -61,7 +61,7 @@ python precompute_embed.py \
 - `--max-sents`: Maximum number of sentences to process
 - `--ckpt-interval`: Checkpoint interval for saving progress
 
-### Step 2: Run The Metric Mirage Algorithm
+### Step 2: Run Proximal Surrogate Generation (PSG) 
 
 After precomputing embeddings, run the main algorithm:
 
@@ -110,7 +110,7 @@ python method.py \
 
 ## Key Files
 
-- `method.py` - Main algorithm implementation of The Metric Mirage
+- `method.py` - Main algorithm implementation of Proximal Surrogate Generation (PSG)
 - `precompute_embed.py` - **Required preprocessing script** to compute embeddings for the unlearning dataset
 - `method_utils.py` - Core utility functions for multi-objective optimization
 - `gcg.py` - Gradient-based Controlled Generation for embedding distance maximization
@@ -153,4 +153,15 @@ python method.py \
 
 ## Citation
 
-If you use this implementation, please cite our paper "The Metric Mirage" (forthcoming).
+If you use this implementation, please cite our paper:
+```bash
+@misc{jia2025erasureillusionstresstestinggeneralization,
+      title={The Erasure Illusion: Stress-Testing the Generalization of LLM Forgetting Evaluation}, 
+      author={Hengrui Jia and Taoran Li and Jonas Guan and Varun Chandrasekaran},
+      year={2025},
+      eprint={2512.19025},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2512.19025}, 
+}
+```
